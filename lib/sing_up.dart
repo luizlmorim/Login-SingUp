@@ -30,18 +30,22 @@ class _LoginPageState extends State<CadastroPage> {
       appBar: AppBar(
         title: Text('Login'),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromRGBO(8, 2, 86, 1),
-              Color.fromRGBO(8, 2, 86, 0.5),
-            ],
+      body: SingleChildScrollView(
+        reverse: true,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromRGBO(8, 2, 86, 1),
+                Color.fromRGBO(8, 2, 86, 0.5),
+              ],
+            ),
           ),
-        ),
+
+        
         child: Center(
           child: Padding(
             padding: EdgeInsets.all(16.0),
@@ -152,6 +156,7 @@ class _LoginPageState extends State<CadastroPage> {
           ),
         ),
       ),
+      )
     );
   }
 }

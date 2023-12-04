@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/home_page.dart';
 import 'package:flutter_application_1/sing_up.dart';
 
 void main() {
@@ -29,19 +30,21 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: Text('Login'),
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color.fromRGBO(8, 2, 86, 1),
-              Color.fromRGBO(8, 2, 86, 0.5),
-            ],
+       body: SingleChildScrollView(
+        reverse: true,
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromRGBO(8, 2, 86, 1),
+                Color.fromRGBO(8, 2, 86, 0.5),
+              ],
+            ),
           ),
-        ),
-        child: Center(
+          child: Center(
           child: Padding(
             padding: EdgeInsets.all(16.0),
             child: Column(
@@ -58,10 +61,10 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(color: Colors.white),
                   controller: _usernameController,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.email_outlined, color: Colors.white), // Cor do ícone
+                    prefixIcon: Icon(Icons.email_outlined, color: Colors.white),
                     labelText: 'Digite seu e-mail: exemplo@gmail.com',
-                    labelStyle: TextStyle(color: Colors.white), // Cor do texto do label
-                    hintStyle: TextStyle(color: Colors.white), // Cor do texto de dica
+                    labelStyle: TextStyle(color: Colors.white),
+                    hintStyle: TextStyle(color: Colors.white),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -75,10 +78,10 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(color: Colors.white),
                   controller: _passwordController,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.vpn_key, color: Colors.white), // Cor do ícone
+                    prefixIcon: Icon(Icons.vpn_key, color: Colors.white),
                     labelText: 'Digite sua senha: ',
-                    labelStyle: TextStyle(color: Colors.white), // Cor do texto do label
-                    hintStyle: TextStyle(color: Colors.white), // Cor do texto de dica
+                    labelStyle: TextStyle(color: Colors.white),
+                    hintStyle: TextStyle(color: Colors.white),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -88,6 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 20.0),
                 ElevatedButton(
                   onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
                     // Adicione sua lógica de autenticação aqui
                     String username = _usernameController.text;
                     String password = _passwordController.text;
@@ -95,9 +99,12 @@ class _LoginPageState extends State<LoginPage> {
                     // Exemplo de impressão dos dados
                     print('Username: $username');
                     print('Password: $password');
+
+                    // Navegar para a HomePage após autenticação bem-sucedida
+                    
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue.shade900, // Cor azul escuro
+                    primary: Colors.blue.shade900,
                   ),
                   child: Text(
                     'Entrar',
@@ -119,33 +126,31 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 10.0),
                 TextButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => CadastroPage()));
-                    },
-                    child: Text(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CadastroPage()));
+                  },
+                  child: Text(
                     'CADASTRE-SE',
                     style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                      ),
+                      color: Colors.white,
+                      fontSize: 16,
                     ),
                   ),
-
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     IconButton(
-                      icon: Icon(Icons.facebook, color: Colors.white), // Cor do ícone do Facebook
+                      icon: Icon(Icons.facebook, color: Colors.white),
                       onPressed: () {
                         print('Entrando com Facebook');
                       },
                     ),
                     IconButton(
-                      icon: Icon(Icons.apple_rounded, color: Colors.white), // Cor do ícone do Google
+                      icon: Icon(Icons.apple_rounded, color: Colors.white),
                       onPressed: () {
-                        // Adicione a lógica do botão do Google aqui
                         print('Botão do Google pressionado');
-                        // Adicione sua lógica de autenticação do Google
+                      
                       },
                     ),
                   ],
@@ -155,6 +160,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+       )
     );
   }
 }
